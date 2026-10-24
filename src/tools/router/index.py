@@ -15,5 +15,5 @@ async def Index(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
         request=request,
         context=context,
-        name="index.html",
+        name="index.jinja2",
     )
