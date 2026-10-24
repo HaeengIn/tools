@@ -1,4 +1,5 @@
 import logging
+from logging import Logger
 
 import uvicorn
 from fastapi import FastAPI
@@ -7,7 +8,7 @@ from requests.sessions import Request
 
 from tools.router.index import router as IndexRouter
 
-logger = logging.getLogger(__name__)
+logger: Logger = logging.getLogger(__name__)
 
 
 class Error(Exception):
