@@ -1,3 +1,6 @@
+{% set canonical = canonical | default("") %}
+{% set title = title | default("") %}
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,6 +10,6 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    {% extends 'nav-bar.jinja2' %}
+    {% include 'nav-bar.jinja2' %}
 </body>
 </html>
