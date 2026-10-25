@@ -2,14 +2,25 @@ from auto_template import setup_templates
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from rich.json import JSON
 
 router = APIRouter(tags=["Index"])
 templates: Jinja2Templates = setup_templates(directory="templates")
 
-@router.get("/")
+
+@router.get(
+    "/",
+    include_in_schema=False,
+    response_class=HTMLResponse,
+)
 async def Index(request: Request) -> HTMLResponse:
-    context = {
+    css_file: JSON = [
+        "index/index",
+    ]
+
+    context: JSON = {
         "title": "Tools by HaeengIn",
+        "css_file": css_file,
     }
 
     return templates.TemplateResponse(
