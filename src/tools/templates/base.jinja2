@@ -1,15 +1,36 @@
+{# Define Jinja2 Variables #}
 {% set canonical = canonical | default("") %}
 {% set title = title | default("") %}
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    {# Meta Settings #}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# Link CSS Files #}
+    <link rel="stylesheet" href="/static/css/reset.css?v={{ static_version('static/css/reset.css') }}">
+    <link rel="stylesheet" href="/static/css/font.css?v={{ static_version('static/css/font.css') }}">
+    {% if css_file %}
+        {% for item in css_file %}
+            <link rel="stylesheet" href="/static/css/{{ item }}.css?v={{ static_version('static/css/' + item + '.css') }}">
+        {% endfor %}
+    {% endif %}
+
+    {# Canonical Setting #}
     <link rel="canonical" href="{{ canonical }}">
+
+    {# Title of Page #}
     <title>{{ title }}</title>
 </head>
 <body>
-    {% include 'nav-bar.jinja2' %}
+    {# Render Navigation Bar #}
+    {% include "nav-bar.jinja2" %}
+
+    {# Main Contents #}
+    <main>
+        {% block body %}{% endblock body %}
+    </main>
 </body>
 </html>
