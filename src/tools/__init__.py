@@ -4,6 +4,7 @@ from logging import Logger
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from requests.sessions import Request
 
 from tools.router.index import router as IndexRouter
@@ -23,6 +24,11 @@ class Error(Exception):
 
 
 app = FastAPI(title="Tools")
+app.mount(
+    "/static",
+    StaticFiles(directory="static"),
+    name="static",
+)
 
 
 @app.exception_handler(Error)
