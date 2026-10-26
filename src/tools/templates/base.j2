@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {# Link CSS Files #}
+    <link rel="stylesheet" href="/static/css/base.css?v={{ static_version('static/css/base.css') }}">
     <link rel="stylesheet" href="/static/css/reset.css?v={{ static_version('static/css/reset.css') }}">
     <link rel="stylesheet" href="/static/css/font.css?v={{ static_version('static/css/font.css') }}">
     {% if css_file %}
