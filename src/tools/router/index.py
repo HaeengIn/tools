@@ -2,6 +2,9 @@ from auto_template import setup_templates
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from jinja2 import TemplateNotFound
+
+from tools.exceptions import Error
 
 router = APIRouter(tags=["Index"])
 templates: Jinja2Templates = setup_templates(directory="templates")
@@ -22,8 +25,14 @@ async def Index(request: Request) -> HTMLResponse:
         "css_file": css_file,
     }
 
-    return templates.TemplateResponse(
-        request=request,
-        context=context,
-        name="index.jinja2",
-    )
+    try:
+        return templates.TemplateResponse(
+            request=request,
+            context=context,
+            name="index.j2",
+        )
+    except TemplateNotFound:
+        raise Error(
+            "Cannot load pgae.",
+            500,
+        )
