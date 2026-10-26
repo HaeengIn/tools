@@ -1,3 +1,12 @@
-.getKST b {
-  font-weight: 500;
+.title b {
+  font-weight: 700;
+}
+
+.code b {
+  font-weight: 600;
+}
+
+.links img {
+  width: auto;
+  height: 32px;
 }
