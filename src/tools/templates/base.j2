@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/font.css?v={{ static_version('static/css/font.css') }}">
     {% if css_file %}
         {% for item in css_file %}
-            <link rel="stylesheet" href="/static/css/{{ item }}.css?v={{ static_version('static/css/' + item + '.css') }}">
+            <link rel="stylesheet" href="/static/css/{{ item }}?v={{ static_version('static/css/' + item) }}">
         {% endfor %}
     {% endif %}
     {% block css %}{% endblock css %}
@@ -35,6 +35,11 @@
     </main>
 
     {# Block for JavaScript #}
+    {% if js_file %}
+        {% for item in js_file %}
+            <script src="/static/js/{{ item }}?v={{ static_version('static/js/' + item) }}"></script>
+        {% endfor %}
+    {% endif %}
     {% block script %}{% endblock script %}
 </body>
 </html>
