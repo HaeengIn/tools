@@ -1,41 +1,13 @@
 {% extends 'base.j2' %}
-{% block css %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css">
-
-{% endblock css %}
 {% block body %}
     <div class="header">
-        <h1>Tools <span>by HaeengIn</span></h1>    
+        <h2>Tools <span>by HaeengIn</span></h2>    
     </div>
     <div class="python-packages">
-        <h2>Python Packages</h2>
+        <h3>Python Packages</h3>
         <div class="getKST">
-            <h3>getKST</h3>
+            <h4>getKST</h4>
             <p><b>getKST</b> is a most convenient Python Package for getting timezone data of <b>'Asia/Seoul'</b>.</p>
-            <p>Here is a simple example of basic usage:</p>
-            <pre><code class="language-python">
-                from getKST import getKST
-
-                KST = getKST() # Type: String
-            </code></pre>
-            <p>..Also you can convert string type data to <b>datetime</b> type data if you use <b>toDatetime()</b></p>
-            <pre><code class="language-python">
-                from getKST import getKST
-
-                KST = getKST(),toDatetime() # Type: Datetime
-            </code></pre>
-            <p>..or use any date format you want!</p>
-            <pre><code class="language-python">
-                from getKST import getKST
-
-                KST = getKST("%Y/%m/%d - %H:%M:%S")
-
-                print(KST) # Result: Year/Month/Date - Hour:Minute:Second
-            </code></pre>
         </div>
     </div>
 {% endblock body %}
-{% block script %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
-    <script>hljs.highlightAll()</script>
-{% endblock script %}
