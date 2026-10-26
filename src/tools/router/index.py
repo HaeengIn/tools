@@ -17,12 +17,17 @@ templates: Jinja2Templates = setup_templates(directory="templates")
 )
 async def Index(request: Request) -> HTMLResponse:
     css_file: list[str] = [
-        "index/index",
+        "index/index.css",
+    ]
+
+    js_file: list[str] = [
+        "index/index.js",
     ]
 
     context: dict = {
         "title": "Tools by HaeengIn",
         "css_file": css_file,
+        "js_file": js_file,
     }
 
     try:
