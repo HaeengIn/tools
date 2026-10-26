@@ -32,7 +32,7 @@ app.mount(
 
 
 @app.exception_handler(Error)
-async def ErrorHandler(
+def ErrorHandler(
     request: Request,
     exception: Error,
 ):
