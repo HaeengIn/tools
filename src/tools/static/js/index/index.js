@@ -1,25 +1,33 @@
 /**
  * Fill HTML Elements
  */
+// Descriptions
+const getkstDescription = document.getElementById("getkstDescription");
+const autoTemplateDescription = document.getElementById(
+  "autoTemplateDescription",
+);
+const toAvifDescription = document.getElementById("toAvifDescription");
+const toJpgDescription = document.getElementById("toJpgDescription");
 
-// Usage Paragragh
-const basicUsage = document.getElementById("basicUsage");
-const datetimeUsage = document.getElementById("datetimeUsage");
-const formatUsage = document.getElementById("formatUsage");
+getkstDescription.innerHTML =
+  "<b>getKST</b> is a most convenient Python Package for getting timezone data of <b>'Asia/Seoul'</b>.";
+autoTemplateDescription.innerHTML =
+  "<b>auto-template</b> is a convenient module that allows you to quickly set up Jinja2 templates in FastAPI.";
+toAvifDescription.innerHTML = "<b>toAVIF</b> is a best solution if you want to convert images to AVIF format.";
+toJpgDescription.innerHTML = "<b>toJPG</b> is a best solution if you want to convert images to JPG format.";
 
-basicUsage.textContent = "Here is a simple example of basic usage:";
-datetimeUsage.innerHTML =
-  "..Also you can convert string type data to <b>datetime</b> type data if you use <b>toDatetime()</b>";
-formatUsage.textContent = "..or use any date format you want!";
 
-// Installation Paragraph
-const pip = document.getElementById("pip");
-const uv = document.getElementById("uv");
+// Buttons
+const getkstButton = document.getElementById("getkstButton");
+const autoTemplateButton = document.getElementById("autoTemplateButton");
+const toAvifTry = document.getElementById("toAvifTry");
+const toAvifDetail = document.getElementById("toAvifDetail");
+const toJpgTry = document.getElementById("toJpgTry");
+const toJpgDetail = document.getElementById("toJpgDetail");
 
-pip.innerHTML = "Install <b>getKST</b> via pip:";
-uv.textContent = "..or install via uv.";
-
-// GitHub Link Button
-const github = document.getElementById("github");
-
-github.textContent = "GitHub";
+getkstButton.textContent = "View getKST";
+autoTemplateButton.textContent = "View auto-template";
+toAvifTry.textContent = "Try Now!";
+toAvifDetail.textContent = "View Details";
+toJpgTry.textContent = "Try Now!";
+toJpgDetail.textContent = "View Details";
