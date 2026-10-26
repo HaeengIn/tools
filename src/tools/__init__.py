@@ -25,7 +25,7 @@ app.mount(
 def ErrorHandler(
     request: Request,
     exception: Error,
-):
+) -> JSONResponse:
     return JSONResponse(
         status_code=exception.status_code,
         content={
@@ -39,7 +39,7 @@ app.include_router(getKSTRouter)
 
 
 def main() -> None:
-    uvicorn(
+    uvicorn.run(
         "tools:app",
         host="0.0.0.0",
         port=8000,
