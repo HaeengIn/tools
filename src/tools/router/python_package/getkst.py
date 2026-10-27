@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 from tools.exceptions import Error
 
 router = APIRouter(tags=["Python Package"])
-template: Jinja2Templates = setup_templates(directory="templates")
+templates: Jinja2Templates = setup_templates(directory="templates")
 
 
 @router.get(
@@ -30,7 +30,7 @@ async def getKST(request: Request) -> HTMLResponse:
     }
 
     try:
-        return template.TemplateResponse(
+        return templates.TemplateResponse(
             request=request,
             context=context,
             name="python-package/getkst/index.j2",
