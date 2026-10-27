@@ -36,7 +36,8 @@ CONVERTED_DIR.mkdir(
     exist_ok=True,
 )
 
-TURNSTILE_SECRET: str | None = os.getenv("TURNSTILE_SECRET_KEY")
+TURNSTILE_SECRET_KEY: str | None = os.getenv("TURNSTILE_SECRET_KEY")
+TURNSTILE_SITE_KEY: str | None = os.getenv("TURNSTILE_SECRET_KEY")
 TURNSTILE_URL: str = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 SESSION_TTL: int = 3600
 MAX_FILES: int = 100
@@ -170,8 +171,17 @@ async def _process_images(
     include_in_schema=False,
 )
 async def toAVIF(request: Request) -> HTMLResponse:
+    js_file: list[str] = [
+        "image-converter/toavif/turnstile.js",
+        "image-converter/toavif/index.js",
+        "image-converter/toavif/upload.js",
+        "image-converter/toavif/progress.js",
+    ]
+
     context: dict = {
         "title": "toAVIF - Convert you images to AVIF images",
+        "js_file": js_file,
+        "TURNSTILE_SITE_KEY": TURNSTILE_SITE_KEY,
     }
 
     try:
@@ -192,7 +202,7 @@ async def VerifyTurnstile(token: str = Form(...)) -> dict[str, str | int]:
     async with httpx.AsyncClient() as client:
         response: Response = await client.post(
             TURNSTILE_URL,
-            data={"secret": TURNSTILE_SECRET, "response": token},
+            data={"secret": TURNSTILE_SECRET_KEY, "response": token},
         )
     if not response.json().get("success"):
         raise Error(
