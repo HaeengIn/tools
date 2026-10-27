@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from tools.exceptions import Error
 from tools.router.index import router as IndexRouter
+from tools.router.python_package.auto_template import router as auto_templateRouter
 from tools.router.python_package.getkst import router as getKSTRouter
 
 logger: Logger = logging.getLogger(__name__)
@@ -36,6 +37,7 @@ def ErrorHandler(
 
 app.include_router(IndexRouter)
 app.include_router(getKSTRouter)
+app.include_router(auto_templateRouter)
 
 
 def main() -> None:
