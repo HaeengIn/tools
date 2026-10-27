@@ -1,0 +1,47 @@
+{% extends 'base.j2' %}
+{% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css">
+{% endblock css %}
+{% block body %}
+    <div class="title">
+        <h2>auto-template</h2>
+        <h4>Fastest way to set up Jinja2 Templates</h4>
+    </div>
+    <div class="code">
+        <h5>How to Use</h5>
+        <p id="basicUsage"></p>
+        <pre><code class="language-python">
+from auto_template import setup_templates
+
+templates = setup_templates(directory="&lt;PATH-TO-TEMPLATE-FOLDER&gt;")
+        </code></pre>
+        <p id="typeHint"></p>
+        <pre><code class="language-python">
+from auto_template import setup_templates
+from fastapi.templating import Jinja2Templates
+
+templates: Jinja2Templates = setup_templates(directory="&lt;PATH-TO-TEMPLATE-FOLDER&gt;")
+        </code></pre>
+        <p id="typeHintDetail"></p>
+    </div>
+    <div class="installation">
+        <h5>How to Install</h5>
+        <p id="pip"></p>
+        <pre><code class="language-bash">pip install auto_template</code></pre>
+        <p id="uv"></p>
+        <pre><code class="language-bash">uv add auto_template</code></pre>
+    </div>
+    <div class="links">
+        <h4>Visit pages for auto-template!</h4>
+        <img alt="PyPI Version" src="https://img.shields.io/pypi/v/auto_template">
+        <img alt="PyPI Python Version" src="https://img.shields.io/pypi/pyversions/auto_template">
+        <img alt="PyPI License" src="https://img.shields.io/pypi/l/auto_template">
+        <a href="https://github.com/HaeengIn/auto_template" target="_blank" rel="noopener noreferrer">
+            <button id="github" class="github"></button>
+        </a>
+    </div>
+{% endblock body %}
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script>hljs.highlightAll()</script>
+{% endblock script %}
