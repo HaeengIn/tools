@@ -17,11 +17,11 @@ template: Jinja2Templates = setup_templates(directory="templates")
 )
 async def getKST(request: Request) -> HTMLResponse:
     css_file: list[str] = [
-        "index/index.css",
+        "getkst/index.css",
     ]
 
     js_file: list[str] = [
-        "index/index.js",
+        "getkst/index.js",
     ]
 
     context: dict = {

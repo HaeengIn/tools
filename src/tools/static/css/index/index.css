@@ -1,12 +1,8 @@
-.title b {
-  font-weight: 700;
+.redirect-button {
+  text-decoration: none;
 }
 
-.code b {
+.python-packages b,
+.image-converter b {
   font-weight: 600;
-}
-
-.links img {
-  width: auto;
-  height: 32px;
 }
