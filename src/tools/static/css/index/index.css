@@ -1,3 +1,8 @@
+.header span {
+  font-size: 80%;
+  font-weight: 500
+}
+
 .redirect-button {
   text-decoration: none;
 }
