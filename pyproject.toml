@@ -2,9 +2,7 @@
 name = "tools"
 version = "0.1.0"
 readme = "README.md"
-authors = [
-    { name = "HaeengIn", email = "haeengin@gmail.com" }
-]
+authors = [{ name = "HaeengIn", email = "haeengin@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = [
     "auto-template>=1.0.0",
@@ -20,6 +18,7 @@ requires = ["uv_build>=0.12.2,<0.13.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
-dev = [
-    "zttp>=0.0.35",
-]
+dev = ["zttp>=0.0.35"]
+
+[tool.ruff.lint]
+ignore = ["BLE001"]
