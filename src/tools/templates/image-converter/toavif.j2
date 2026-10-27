@@ -1,1 +1,29 @@
+{% set TURNSTILE_SITE_KEY = TURNSTILE_SITE_KEY | default("") %}
+
 {% extends 'base.j2' %}
+{% block body %}
+    <div class="title">
+        <h1>toAVIF</h1>
+        <h3>Best solution for converting images to AVIF</h3>
+    </div>
+    <div id="turnstileContainer" data-sitekey="{{ TURNSTILE_SITE_KEY }}"></div>
+    <div id="uploadSection">
+        <h5>Drag & Drop you images here.</h5>
+        <p id="maxImageNote"></p>
+        <input type="file" id="fileInput" accept="image/*" multiple>
+        <button id="uploadButton"></button>
+        <progress id="uploadProgress" value="0" max="100"></progress>
+        <progress id="currentProgress" value="0" max="100"></progress>
+        <progress id="overallProgress" value="0" max="100"></progress>
+        <span id="currentFilename"></span>
+    </div>
+    <div id="downloadSection">
+        <div id="downloadList"></div>
+        <a id="downloadZip">
+            <button id="downloadZipButton"></button>
+        </a>
+    </div>
+{% endblock body %}
+{% block script %}
+    <script defer async src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad"></script>
+{% endblock script %}
