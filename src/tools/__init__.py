@@ -36,6 +36,13 @@ def ErrorHandler(
     request: Request,
     exception: Error,
 ) -> JSONResponse:
+    logger.error(
+        "%s %s - %d: %s",
+        request.method,
+        request.url.path,
+        exception.status_code,
+        exception.message,
+    )
     return JSONResponse(
         status_code=exception.status_code,
         content={
@@ -48,6 +55,8 @@ app.include_router(IndexRouter)
 app.include_router(getKSTRouter)
 app.include_router(auto_templateRouter)
 app.include_router(toAVIFRouter)
+
+logging.basicConfig(level=logging.INFO)
 
 
 def main() -> None:
