@@ -16,17 +16,20 @@ templates: Jinja2Templates = setup_templates(directory="templates")
 )
 async def getKST(request: Request) -> HTMLResponse:
     css_file: list[str] = [
-        "getkst/index.css",
+        "python-package/getkst/index.css",
     ]
 
     js_file: list[str] = [
-        "getkst/index.js",
+        "python-package/getkst/index.js",
     ]
 
     context: dict = {
         "title": "getKST - Most easiest way to get Asia/Seoul timezone data",
         "css_file": css_file,
         "js_file": js_file,
+        "package_name": "getKST",
+        "package_desc": "for timezone data of <b>'Asia/Seoul'</b>",
+        "package_pypi_name": "getKST",
     }
 
     try:
