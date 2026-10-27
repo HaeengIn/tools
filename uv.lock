@@ -1,5 +1,5 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.14'",
@@ -1176,6 +1176,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/df/f3/90993aab504fa2e1f28fcc09aa16b6ea4f00e75a037d9136e737855833e2/pyvips-3.2.0.tar.gz", hash = "sha256:5fa47cdce4e7f450747c118c12fde913e0710850c6015d8ec4f5af490003a347", size = 72067, upload-time = "2026-08-29T13:31:03.773Z" }
 
 [[package]]
+name = "pyvips-binary"
+version = "8.18.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "cffi" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2c/0f/e6bd3e5de90969c5a2cdb333780d79ae5b9a686969e943214fd8debafe64/pyvips_binary-8.18.7.tar.gz", hash = "sha256:ee6b59c6b88494651b18483f52a850ef24883eac4130e8cf6e6d14277506f973", size = 3722, upload-time = "2026-09-28T13:58:06.129Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/f8/126dd11ee230e14071ce1a59dec935bad3570a86a0fea74ee20aaf528e72/pyvips_binary-8.18.7-cp37-abi3-win32.whl", hash = "sha256:f6594910e8f4db8e004ef35022df740d595a5288c2d999e1bd9ad0b4ba59673a", size = 8312012, upload-time = "2026-09-28T13:58:00.544Z" },
+    { url = "https://files.pythonhosted.org/packages/7a/24/6128202b9a94109f678eb9c2bc048ce622dca50e375e2712c16986f6366d/pyvips_binary-8.18.7-cp37-abi3-win_amd64.whl", hash = "sha256:0c31cdaf88196e01a7a3e4372f3447d06db3c58383c15ff2eeaaa715952b1ec8", size = 8325477, upload-time = "2026-09-28T13:58:02.114Z" },
+    { url = "https://files.pythonhosted.org/packages/ad/42/36aa30f8f7b5c7043e021f5b6b0f86c836332a0c74099d20528855a1e3aa/pyvips_binary-8.18.7-cp37-abi3-win_arm64.whl", hash = "sha256:c6005481208c3c768e1dfba345bfbbcbad886aad9615b15cd62a9dc7ccb0e88b", size = 7616570, upload-time = "2026-09-28T13:58:03.806Z" },
+]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1412,6 +1426,7 @@ dependencies = [
     { name = "fastapi", extra = ["standard"] },
     { name = "httpx" },
     { name = "pyvips" },
+    { name = "pyvips-binary", marker = "sys_platform == 'win32'" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
@@ -1427,6 +1442,7 @@ requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.161.1" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "pyvips", specifier = ">=3.2.0" },
+    { name = "pyvips-binary", marker = "sys_platform == 'win32'", specifier = ">=8.18.7" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.54.0" },
 ]
 
