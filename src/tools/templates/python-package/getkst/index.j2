@@ -1,51 +1,17 @@
-{% extends 'base.j2' %}
-{% block css %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css">
-{% endblock css %}
-{% block body %}
-    <div class="title">
-        <h2>getKST</h2>
-        <h4>for timezone <b>'Asia/Seoul'</b></h4>
-    </div>
-    <div class="code">
-        <p id="basicUsage"></p>
-        <pre><code class="language-python">
-from getKST import getKST
+{% extends 'python-package/base.j2' %}
+{% block basicUsage_code %}from getKST import getKST
 
 KST = getKST() # Type: String
-        </code></pre>
-        <p id="datetimeUsage"></p>
-        <pre><code class="language-python">
-from getKST import getKST
+{% endblock basicUsage_code %}
+{% block additional_code %}
+    <p id="datetimeUsage"></p>
+    <pre><code class="language-python">from getKST import getKST
 
-KST = getKST(),toDatetime() # Type: Datetime
-        </code></pre>
-        <p id="formatUsage"></p>
-        <pre><code class="language-python">
-from getKST import getKST
+KST = getKST(),toDatetime() # Type: Datetime</code></pre>
+    <p id="formatUsage"></p>
+    <pre><code class="language-python">from getKST import getKST
 
 KST = getKST("%Y/%m/%d - %H:%M:%S")
 
-print(KST) # Result: Year/Month/Date - Hour:Minute:Second
-        </code></pre>
-    </div>
-    <div class="installation">
-        <p id="pip"></p>
-        <pre><code class="language-bash">pip install getKST</code></pre>
-        <p id="uv"></p>
-        <pre><code class="language-bash">uv add getKST</code></pre>
-    </div>
-    <div class="links">
-        <h4>Visit pages for getKST!</h4>
-        <img alt="PyPI Version" src="https://img.shields.io/pypi/v/getKST">
-        <img alt="PyPI Python Version" src="https://img.shields.io/pypi/pyversions/getKST">
-        <img alt="PyPI License" src="https://img.shields.io/pypi/l/getKST">
-        <a href="https://github.com/HaeengIn/getKST" target="_blank" rel="noopener noreferrer">
-            <button id="github" class="github"></button>
-        </a>
-    </div>
-{% endblock body %}
-{% block script %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
-    <script>hljs.highlightAll()</script>
-{% endblock script %}
+print(KST) # Result: Year/Month/Date - Hour:Minute:Second</code></pre>
+{% endblock additional_code %}

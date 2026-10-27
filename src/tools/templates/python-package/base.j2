@@ -1,0 +1,43 @@
+{# Define variables #}
+{% set package_name = package_name | default("") %}
+{% set package_desc = package_desc | default("") %}
+{% set package_pypi_name = package_pypi_name | default("") %}
+
+{% extends 'base.j2' %}
+{% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="/static/css/python-package/base.css?v={{ static_version('static/css/python-package/base.css') }}">
+{% endblock css %}
+{% block body %}
+    <div class="title">
+        <h1>{{ package_name }}</h1>
+        <h4>{{ package_desc }}</h3>
+    </div>
+    <div class="code">
+        <h5>How to Use</h5>
+        <p id="basicUsage"></p>
+        <pre><code class="language-python">{% block basicUsage_code %}{% endblock basicUsage_code %}</code></pre>
+        {% block additional_code %}{% endblock additional_code %}
+    </div>
+    <div class="installation">
+        <h5>How to Install</h5>
+        <p id="pip" data-package="{{ package_name }}"></p>
+        <pre><code>pip install {{ package_pypi_name }}</code></pre>
+        <p id="uv"></p>
+        <pre><code>uv add {{ package_pypi_name }}</code></pre>
+    </div>
+    <div class="links">
+        <h4>Visit pages for {{ package_name }}!</h4>
+        <img src="https://img.shields.io/pypi/v/{{ package_pypi_name }}" alt="PyPI Version">
+        <img src="https://img.shields.io/pypi/pyversions/{{ package_pypi_name }}" alt="PyPI Python Version">
+        <img src="https://img.shields.io/pypi/l/{{ package_pypi_name }}" alt="PyPI License">
+        <a href="https://github.com/HaeengIn/{{ package_pypi_name }}" target="_blank" rel="noopener noreferrer">
+            <button id="github" class="github"></button>
+        </a>
+    </div>
+{% endblock body %}
+{% block script %}
+    <script src="/static/js/python-package/base.js?v={{ static_version('static/js/python-package/base.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script>hljs.highlightAll()</script>
+{% endblock script %}

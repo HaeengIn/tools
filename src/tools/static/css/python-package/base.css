@@ -1,0 +1,12 @@
+.title b {
+  font-weight: 900;
+}
+
+.code b {
+  font-weight: 600;
+}
+
+.links img {
+  width: auto;
+  height: 32px;
+}
