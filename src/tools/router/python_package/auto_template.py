@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from tools.exceptions import Error
 
-router = APIRouter(tags=["Python Packages"])
+router = APIRouter(tags=["Python Package"])
 templates: Jinja2Templates = setup_templates(directory="templates")
 
 
