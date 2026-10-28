@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.14'",
@@ -1425,6 +1425,7 @@ dependencies = [
     { name = "auto-template" },
     { name = "fastapi", extra = ["standard"] },
     { name = "httpx" },
+    { name = "python-dotenv" },
     { name = "pyvips" },
     { name = "pyvips-binary", marker = "sys_platform == 'win32'" },
     { name = "uvicorn", extra = ["standard"] },
@@ -1441,6 +1442,7 @@ requires-dist = [
     { name = "auto-template", specifier = ">=1.0.0" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.161.1" },
     { name = "httpx", specifier = ">=0.28.1" },
+    { name = "python-dotenv", specifier = ">=1.2.4" },
     { name = "pyvips", specifier = ">=3.2.0" },
     { name = "pyvips-binary", marker = "sys_platform == 'win32'", specifier = ">=8.18.7" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.54.0" },

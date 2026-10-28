@@ -9,6 +9,7 @@ dependencies = [
     "auto-template>=1.0.0",
     "fastapi[standard]>=0.161.1",
     "httpx>=0.28.1",
+    "python-dotenv>=1.2.4",
     "pyvips>=3.2.0",
     "pyvips-binary>=8.18.7 ; sys_platform == 'win32'",
     "uvicorn[standard]>=0.54.0",
