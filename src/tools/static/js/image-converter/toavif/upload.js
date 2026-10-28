@@ -35,3 +35,23 @@ uploadBtn.addEventListener("click", async () => {
   xhr.open("POST", "/toavif/upload");
   xhr.send(formData);
 });
+
+fileInput.addEventListener("change", () => {
+  const filePreviewList = document.getElementById("filePreviewList");
+  filePreviewList.innerHTML = "";
+
+  for (const file of fileInput.files) {
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    img.onload = () => URL.revokeObjectURL(img.src);
+
+    const name = document.createElement("span");
+    name.textContent = file.name;
+
+    const item = document.createElement("div");
+    item.className = "preview";
+    item.appendChild(img);
+    item.appendChild(name);
+    filePreviewList.appendChild(item);
+  }
+});
