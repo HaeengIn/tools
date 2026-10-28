@@ -1,0 +1,15 @@
+.file-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.file-preview-list img {
+  width: 100px;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
