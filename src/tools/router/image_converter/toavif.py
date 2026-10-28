@@ -14,6 +14,7 @@ import aiofiles
 import httpx
 import pyvips
 from auto_template import setup_templates
+from dotenv import load_dotenv
 from fastapi import APIRouter, Form, Request, UploadFile
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
@@ -21,6 +22,8 @@ from httpx._models import Response
 from pyvips.vimage import Image
 
 from tools.exceptions import Error
+
+load_dotenv()
 
 router = APIRouter(tags=["Image Converter"])
 templates: Jinja2Templates = setup_templates(directory="templates")
@@ -37,7 +40,7 @@ CONVERTED_DIR.mkdir(
 )
 
 TURNSTILE_SECRET_KEY: str | None = os.getenv("TURNSTILE_SECRET_KEY")
-TURNSTILE_SITE_KEY: str | None = os.getenv("TURNSTILE_SECRET_KEY")
+TURNSTILE_SITE_KEY: str | None = os.getenv("TURNSTILE_SITE_KEY")
 TURNSTILE_URL: str = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 SESSION_TTL: int = 3600
 MAX_FILES: int = 100
