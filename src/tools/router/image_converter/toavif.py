@@ -1,3 +1,4 @@
+from urllib.parse import quote
 import asyncio
 import os
 import secrets
@@ -174,6 +175,10 @@ async def _process_images(
     include_in_schema=False,
 )
 async def toAVIF(request: Request) -> HTMLResponse:
+    css_file: list[str] = [
+        "image-converter/toavif/index.css",
+    ]
+
     js_file: list[str] = [
         "image-converter/toavif/turnstile.js",
         "image-converter/toavif/index.js",
@@ -183,6 +188,7 @@ async def toAVIF(request: Request) -> HTMLResponse:
 
     context: dict = {
         "title": "toAVIF - Convert you images to AVIF images",
+        "css_file": css_file,
         "js_file": js_file,
         "TURNSTILE_SITE_KEY": TURNSTILE_SITE_KEY,
     }
@@ -311,7 +317,7 @@ async def stream_progress(job_id: str) -> StreamingResponse:
     )
 
 
-@router.get("/toavif/download/{job_id}/{filename}")
+@router.get("/toavif/download/{job_id}/{filename:path}")
 async def download_file(job_id: str, filename: str) -> StreamingResponse:
     file_path: Path = CONVERTED_DIR / job_id / filename
 
@@ -338,7 +344,7 @@ async def download_file(job_id: str, filename: str) -> StreamingResponse:
         _stream(),
         media_type="image/avif",
         headers={
-            "Content-Disposition": f"attachment; filename='{filename}'",
+            "Content-Disposition": f"attachment; filename*=UTF-8''{quote(filename)}",
             "Content-Length": str(file_path.stat().st_size),
         },
     )
@@ -377,7 +383,7 @@ async def download_zip(job_id: str) -> StreamingResponse:
         _stream(),
         media_type="application/zip",
         headers={
-            "Content-Disposition": f"attachment; filename='{zip_name}'",
+            "Content-Disposition": f"attachment; filename*=UTF-8''{quote(zip_name)}",
             "Content-Length": str(len(data)),
         },
     )
