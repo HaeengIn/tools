@@ -4,16 +4,14 @@ const uploadBtn = document.getElementById("uploadButton");
 const uploadProgress = document.getElementById("uploadProgress");
 
 uploadBtn.addEventListener("click", async () => {
-  const files = fileInput.files;
-
-  if (!files.length) return;
+  if (!selectedFiles.length) return;
 
   const sessionToken = sessionStorage.getItem("session_token");
   const formData = new FormData();
 
   formData.append("session_token", sessionToken);
 
-  for (const file of files) {
+  for (const file of selectedFiles) {
     formData.append("files", file);
   }
 
@@ -36,22 +34,57 @@ uploadBtn.addEventListener("click", async () => {
   xhr.send(formData);
 });
 
+let selectedFiles = [];
+
 fileInput.addEventListener("change", () => {
+  for (const file of fileInput.files) {
+    if (
+      !selectedFiles.some((f) => f.name === file.name && f.size === file.size)
+    ) {
+      selectedFiles.push(file);
+    }
+  }
+
+  renderFileList();
+});
+
+function renderFileList() {
   const filePreviewList = document.getElementById("filePreviewList");
+
   filePreviewList.innerHTML = "";
 
-  for (const file of fileInput.files) {
+  for (let i = 0; i < selectedFiles.length; i++) {
+    const file = selectedFiles[i];
     const img = document.createElement("img");
+    const name = document.createElement("span");
+    const removeButton = document.createElement("button");
+    const item = document.createElement("div");
+
     img.src = URL.createObjectURL(file);
     img.onload = () => URL.revokeObjectURL(img.src);
 
-    const name = document.createElement("span");
     name.textContent = file.name;
 
-    const item = document.createElement("div");
-    item.className = "preview";
+    removeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+  <line x1="1" y1="1" x2="9" y2="9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="9" y1="1" x2="1" y2="9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>`;
+    removeButton.className = "remove-button";
+    removeButton.addEventListener("click", () => {
+      selectedFiles.splice(i, 1);
+      renderFileList();
+    });
+
     item.appendChild(img);
     item.appendChild(name);
+    item.appendChild(removeButton);
+    item.className = "file-preview-item";
     filePreviewList.appendChild(item);
   }
-});
+
+  const dt = new DataTransfer();
+  for (const file of selectedFiles) {
+    dt.items.add(file);
+  }
+  fileInput.files = dt.files;
+}
