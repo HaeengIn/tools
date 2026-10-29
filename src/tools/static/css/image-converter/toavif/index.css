@@ -1,3 +1,7 @@
+main {
+  margin: 0 20px 20px 20px;
+}
+
 .file-preview-list {
   display: flex;
   flex-direction: column;
@@ -8,10 +12,15 @@
   width: 100px;
 }
 
-.preview {
+.file-preview-item {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.file-preview-item .remove-button {
+  margin: 0 12px 0 auto;
 }
 
 .progress-container {
@@ -25,7 +34,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-width: 2px;
   border-color: #000000;
   border-style: solid;
@@ -35,4 +44,22 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
   background-color: #4e8bd6;
   border-radius: 6px;
+}
+
+.remove-button {
+  width: 24px;
+  height: 24px;
+  background-color: #e53e3e;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(229, 62, 62, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.5s;
+}
+
+.remove-button:hover {
+  box-shadow: 0 0 12px rgba(229, 62, 62, 0.9);
 }
