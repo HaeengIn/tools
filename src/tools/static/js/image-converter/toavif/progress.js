@@ -25,7 +25,7 @@ function startProgressStream(jobId) {
 
       for (const filename of data.files) {
         const a = document.createElement("a");
-        a.href = `/toavif/download/${jobId}/${filename}`;
+        a.href = `/toavif/download/${jobId}/${encodeURIComponent(filename)}`;
         a.download = filename;
 
         const btn = document.createElement("button");

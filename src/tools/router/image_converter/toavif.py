@@ -1,4 +1,3 @@
-from urllib.parse import quote
 import asyncio
 import os
 import secrets
@@ -10,6 +9,7 @@ from collections.abc import AsyncGenerator
 from dataclasses import dataclass, field
 from io import BytesIO
 from pathlib import Path
+from urllib.parse import quote
 
 import aiofiles
 import httpx
@@ -319,9 +319,24 @@ async def stream_progress(job_id: str) -> StreamingResponse:
 
 @router.get("/toavif/download/{job_id}/{filename:path}")
 async def download_file(job_id: str, filename: str) -> StreamingResponse:
-    file_path: Path = CONVERTED_DIR / job_id / filename
+    job_dir: Path = CONVERTED_DIR / job_id
 
-    if not file_path.is_file():
+    if not job_dir.is_dir():
+        raise Error(
+            "Cannot find image.",
+            404,
+        )
+
+    file_path: Path | None = next(
+        (
+            path
+            for path in job_dir.iterdir()
+            if path.is_file() and path.name.casefold() == filename.casefold()
+        ),
+        None,
+    )
+
+    if file_path is None:
         raise Error(
             "Cannot find image.",
             404,
