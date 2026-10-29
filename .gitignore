@@ -211,7 +211,8 @@ pip-selfcheck.json
 .ionide
 
 ### Image converter ###
-# Ignore converted files
+# Ignore files of image converter service
 converted/
+uploads/
 
 # End of https://www.toptal.com/developers/gitignore/api/venv,virtualenv,dotenv,python,visualstudiocode
